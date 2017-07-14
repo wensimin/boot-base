@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.sping.project.app.dao.UserDao;
-import com.sping.project.app.dao.UserMongoDao;
 import com.sping.project.app.entity.User;
 import com.sping.project.app.entity.base.QueryPage;
 import com.sping.project.app.mapper.UserMapper;
@@ -24,8 +23,6 @@ public class TestService {
 	private UserDao userDao;
 	@Autowired
 	private UserMapper userMapper;
-	@Autowired
-	private UserMongoDao userMongoDao;
 
 	public List<User> getAllUser(User user) {
 		return userDao.findAll();
@@ -35,8 +32,6 @@ public class TestService {
 		if (page.getQuery() == null) {
 			return userDao.findAll(page.getPageRequest());
 		} else {
-			// mongo find
-			userMongoDao.findAll();
 			// mybatis query
 			userMapper.findByNameLike(page.getQuery().getName());
 			// predicate query
@@ -58,8 +53,6 @@ public class TestService {
 	}
 
 	public User saveUser(User user) {
-		// error! mongodb 不能使用Long id 
-		// userMongoDao.save(user);
 		return userDao.save(user);
 	}
 
