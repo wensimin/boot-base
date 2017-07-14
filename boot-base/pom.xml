@@ -59,7 +59,34 @@
 	</dependencies>
 	<build>
 		<finalName>boot-demo</finalName>
+		<resources>
+			<!-- src/main/resources 下所有 xml 文件：需要变量替换 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+			<!-- src/main/resources 下所有非 xml 文件：原样拷贝，不进行变量替换 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.xml</exclude>
+					<exclude>**/*.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -70,4 +97,38 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<maven.jdbc.host>192.168.0.209</maven.jdbc.host>
+				<maven.jdbc.port>3306</maven.jdbc.port>
+				<maven.jdbc.db>boot-demo</maven.jdbc.db>
+				<maven.jdbc.username>shuangping</maven.jdbc.username>
+				<maven.jdbc.password>123456147</maven.jdbc.password>
+				<maven.redis.host>192.168.0.209</maven.redis.host>
+				<maven.redis.port>6379</maven.redis.port>
+				<maven.redis.password>shuangping123</maven.redis.password>
+				<maven.redis.db>3</maven.redis.db>
+				<maven.mongodb.url>mongodb://boot:753951@127.0.0.1:27017/boot-base</maven.mongodb.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<maven.jdbc.host>xxx.xxx.xxx.xxx</maven.jdbc.host>
+				<maven.jdbc.port>xxx</maven.jdbc.port>
+				<maven.jdbc.db>xxx</maven.jdbc.db>
+				<maven.jdbc.username>xxx</maven.jdbc.username>
+				<maven.jdbc.password>xxx</maven.jdbc.password>
+				<maven.redis.host>xxx</maven.redis.host>
+				<maven.redis.port>xxx</maven.redis.port>
+				<maven.redis.password>xxx</maven.redis.password>
+				<maven.redis.db>3</maven.redis.db>
+			</properties>
+		</profile>
+	</profiles>
 </project>
