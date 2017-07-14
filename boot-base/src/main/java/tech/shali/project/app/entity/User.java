@@ -2,10 +2,13 @@ package tech.shali.project.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import tech.shali.project.app.entity.base.DataEntity;
+import tech.shali.project.app.entity.eunm.UserType;
 
 @Entity
 public class User extends DataEntity {
@@ -16,6 +19,9 @@ public class User extends DataEntity {
 	private Long id;
 	@Column(nullable = false)
 	private String name;
+	@Column
+	@Enumerated(EnumType.STRING)
+	private UserType type;
 
 	public Long getId() {
 		return id;
@@ -31,6 +37,14 @@ public class User extends DataEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public UserType getType() {
+		return type;
+	}
+
+	public void setType(UserType type) {
+		this.type = type;
 	}
 
 }
