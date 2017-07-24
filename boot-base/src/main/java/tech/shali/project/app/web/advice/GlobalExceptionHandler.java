@@ -1,6 +1,7 @@
 package tech.shali.project.app.web.advice;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +20,12 @@ public class GlobalExceptionHandler {
 		// TODO il18n
 		e.printStackTrace();
 		return new Response("系统错误");
+	}
+
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(value = BindException.class)
+	public Response bindException(BindException e) {
+		return new Response(Codes.PARAM_ERROR, e.getFieldError().getDefaultMessage());
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
