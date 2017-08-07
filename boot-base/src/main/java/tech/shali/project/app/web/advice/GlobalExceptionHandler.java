@@ -1,7 +1,7 @@
 package tech.shali.project.app.web.advice;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,9 +23,9 @@ public class GlobalExceptionHandler {
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler(value = BindException.class)
-	public Response bindException(BindException e) {
-		return new Response(Codes.PARAM_ERROR, e.getFieldError().getDefaultMessage());
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public Response bindException(MethodArgumentNotValidException e) {
+		return new Response(Codes.PARAM_ERROR, e.getBindingResult().getFieldError().getDefaultMessage());
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
