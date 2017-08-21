@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import tech.shali.project.app.web.security.SecurityInterceptor;
-import tech.shali.project.app.web.security.xss.XSSFilter;
 import tech.shali.project.app.web.security.xss.XssStringJsonSerializer;
 
 @Configuration
@@ -27,16 +26,6 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(securityInterceptor);
 		super.addInterceptors(registry);
-	}
-	
-	/**
-	 * xss过滤器 过滤xss值
-	 * 
-	 * @return bean
-	 */
-	@Bean
-	public XSSFilter xssFilter() {
-		return new XSSFilter();
 	}
 
 	/**
