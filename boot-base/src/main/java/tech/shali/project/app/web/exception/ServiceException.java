@@ -1,5 +1,7 @@
 package tech.shali.project.app.web.exception;
 
+import tech.shali.project.app.web.advice.Codes;
+
 public class ServiceException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
@@ -8,6 +10,7 @@ public class ServiceException extends RuntimeException{
 	
 	public ServiceException(String message) {
 		super(message);
+		this.code = Codes.ERROR;
 	}
 	public ServiceException(String code,String message) {
 		super(message);
