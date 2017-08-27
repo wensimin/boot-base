@@ -47,4 +47,8 @@ public class User extends DataEntity {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "id:" + id + ",name:" + name + ",type:" + type;
+	}
 }
