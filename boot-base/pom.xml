@@ -124,9 +124,9 @@
 				<maven.jdbc.db>base</maven.jdbc.db>
 				<maven.jdbc.username>root</maven.jdbc.username>
 				<maven.jdbc.password>753951anna</maven.jdbc.password>
-				<maven.redis.host>192.168.0.209</maven.redis.host>
+				<maven.redis.host>192.168.0.200</maven.redis.host>
 				<maven.redis.port>6379</maven.redis.port>
-				<maven.redis.password>shuangping123</maven.redis.password>
+				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>3</maven.redis.db>
 				<maven.mongodb.url>mongodb://boot:753951@127.0.0.1:27017/boot-base</maven.mongodb.url>
 				<maven.rabbitma.host>192.168.0.200</maven.rabbitma.host>
