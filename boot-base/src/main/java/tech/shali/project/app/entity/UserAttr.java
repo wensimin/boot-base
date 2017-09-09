@@ -1,21 +1,32 @@
 package tech.shali.project.app.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class MongoUser {
+import tech.shali.project.app.entity.base.DataEntity;
+
+/**
+ * 用户属性
+ * 
+ * @author wensimin
+ *
+ */
+@Entity
+public class UserAttr extends DataEntity {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 	@Column(nullable = false)
 	private String name;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

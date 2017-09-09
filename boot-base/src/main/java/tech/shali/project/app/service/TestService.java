@@ -3,7 +3,10 @@ package tech.shali.project.app.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Subquery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -14,6 +17,7 @@ import org.springframework.util.StringUtils;
 
 import tech.shali.project.app.dao.UserDao;
 import tech.shali.project.app.entity.TestUser;
+import tech.shali.project.app.entity.UserAttr;
 import tech.shali.project.app.entity.base.QueryPage;
 import tech.shali.project.app.mapper.UserMapper;
 
@@ -58,5 +62,21 @@ public class TestService {
 
 	public void deleteUser(Long id) {
 		userDao.delete(id);
+	}
+
+	/**
+	 * 根据manyTomany 关系进行查询
+	 * @demo
+	 * @param attr
+	 * @return
+	 */
+	public Page<TestUser> getPageByAttr(UserAttr attr) {
+		return userDao.findAll((root, query, cb) -> {
+			Subquery<UserAttr> subquery = query.subquery(UserAttr.class);
+			Root<TestUser> subqueryRoot = subquery.correlate(root);
+			Join<TestUser, UserAttr> joins = subqueryRoot.join("attrs");
+			subquery.select(joins).where(cb.equal(joins.get("id"), attr.getId()));
+			return query.where(cb.exists(subquery)).getRestriction();
+		}, new QueryPage<>().getPageRequest());
 	}
 }

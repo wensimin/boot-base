@@ -45,10 +45,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -129,7 +125,6 @@
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>1</maven.redis.db>
-				<maven.mongodb.url>mongodb://admin:753951anna@192.168.0.200:27017/boot-base</maven.mongodb.url>
 			</properties>
 		</profile>
 		<profile>

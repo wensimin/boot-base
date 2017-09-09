@@ -1,11 +1,15 @@
 package tech.shali.project.app.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import tech.shali.project.app.entity.base.DataEntity;
 import tech.shali.project.app.entity.eunm.UserType;
@@ -22,6 +26,10 @@ public class TestUser extends DataEntity {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private UserType type;
+
+	@ManyToMany
+	@JoinColumn
+	private List<UserAttr> attrs;
 
 	public Long getId() {
 		return id;
@@ -45,6 +53,14 @@ public class TestUser extends DataEntity {
 
 	public void setType(UserType type) {
 		this.type = type;
+	}
+
+	public List<UserAttr> getAttrs() {
+		return attrs;
+	}
+
+	public void setAttrs(List<UserAttr> attrs) {
+		this.attrs = attrs;
 	}
 
 }
