@@ -119,15 +119,15 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<maven.jdbc.host>192.168.0.209</maven.jdbc.host>
+				<maven.jdbc.host>192.168.0.200</maven.jdbc.host>
 				<maven.jdbc.port>3306</maven.jdbc.port>
-				<maven.jdbc.db>boot-demo</maven.jdbc.db>
-				<maven.jdbc.username>shuangping</maven.jdbc.username>
-				<maven.jdbc.password>123456147</maven.jdbc.password>
-				<maven.redis.host>192.168.0.209</maven.redis.host>
+				<maven.jdbc.db>base</maven.jdbc.db>
+				<maven.jdbc.username>root</maven.jdbc.username>
+				<maven.jdbc.password>753951anna</maven.jdbc.password>
+				<maven.redis.host>192.168.0.200</maven.redis.host>
 				<maven.redis.port>6379</maven.redis.port>
-				<maven.redis.password>shuangping123</maven.redis.password>
-				<maven.redis.db>3</maven.redis.db>
+				<maven.redis.password>753951anna</maven.redis.password>
+				<maven.redis.db>1</maven.redis.db>
 				<maven.mongodb.url>mongodb://boot:753951@127.0.0.1:27017/boot-base</maven.mongodb.url>
 			</properties>
 		</profile>
