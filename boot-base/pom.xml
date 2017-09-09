@@ -128,11 +128,11 @@
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>3</maven.redis.db>
-				<maven.mongodb.url>mongodb://boot:753951@127.0.0.1:27017/boot-base</maven.mongodb.url>
+				<maven.mongodb.url>mongodb://mongo:753951anna@192.168.0.200:27017/boot-base</maven.mongodb.url>
 				<maven.rabbitmq.host>192.168.0.200</maven.rabbitmq.host>
 				<maven.rabbitmq.port>5672</maven.rabbitmq.port>
 				<maven.rabbitmq.username>admin</maven.rabbitmq.username>
-				<maven.rabbitmq.password>753951</maven.rabbitmq.password>
+				<maven.rabbitmq.password>753951anna</maven.rabbitmq.password>
 				<maven.rabbitmq.queue.name>hello</maven.rabbitmq.queue.name>
 			</properties>
 		</profile>
