@@ -28,8 +28,9 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+		    <groupId>postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1208-jdbc42-atlassian-hosted</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -120,15 +121,15 @@
 			</activation>
 			<properties>
 				<maven.jdbc.host>192.168.0.200</maven.jdbc.host>
-				<maven.jdbc.port>3306</maven.jdbc.port>
+				<maven.jdbc.port>5432</maven.jdbc.port>
 				<maven.jdbc.db>base</maven.jdbc.db>
-				<maven.jdbc.username>root</maven.jdbc.username>
+				<maven.jdbc.username>postgres</maven.jdbc.username>
 				<maven.jdbc.password>753951anna</maven.jdbc.password>
 				<maven.redis.host>192.168.0.200</maven.redis.host>
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>1</maven.redis.db>
-				<maven.mongodb.url>mongodb://boot:753951@127.0.0.1:27017/boot-base</maven.mongodb.url>
+				<maven.mongodb.url>mongodb://admin:753951anna@192.168.0.200:27017/boot-base</maven.mongodb.url>
 			</properties>
 		</profile>
 		<profile>

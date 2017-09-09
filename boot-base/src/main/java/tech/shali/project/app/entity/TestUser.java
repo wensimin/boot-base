@@ -11,7 +11,7 @@ import tech.shali.project.app.entity.base.DataEntity;
 import tech.shali.project.app.entity.eunm.UserType;
 
 @Entity
-public class User extends DataEntity {
+public class TestUser extends DataEntity {
 
 	private static final long serialVersionUID = 1L;
 	@Id
