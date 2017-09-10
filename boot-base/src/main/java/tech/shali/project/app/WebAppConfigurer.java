@@ -20,13 +20,13 @@ import tech.shali.project.app.web.security.xss.XssStringJsonSerializer;
 public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 	@Value("${cors.control.maxAge}")
 	private int maxAge;
-	@Autowired
-	private SecurityInterceptor securityInterceptor;
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(securityInterceptor);
-		super.addInterceptors(registry);
-	}
+//	@Autowired
+//	private SecurityInterceptor securityInterceptor;
+//	@Override
+//	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(securityInterceptor);
+//		super.addInterceptors(registry);
+//	}
 
 	/**
 	 * 描述 : xssObjectMapper
