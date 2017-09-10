@@ -36,22 +36,29 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	private SysUserService sysUserService;
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	@Value("3600")
+	@Value("${auth.token.expiration}")
 	private int expiration;
-	
+	@Value("${auth.client}")
+	private String client;
+	@Value("${auth.secret}")
+	private String secret;
+	@Value("${auth.token.name}")
+	private String name;
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
 		configurer.authenticationManager(authenticationManager);
 		configurer.userDetailsService(sysUserService);
 	}
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("gigy").secret("secret").accessTokenValiditySeconds(expiration)
+		clients.inMemory().withClient(client).secret(secret).accessTokenValiditySeconds(expiration)
 				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
 	}
 }
