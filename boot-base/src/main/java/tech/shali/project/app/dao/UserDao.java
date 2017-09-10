@@ -5,8 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import tech.shali.project.app.entity.User;
+import tech.shali.project.app.entity.TestUser;
 
-public interface UserDao extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
-	Page<User> findByName(String name, Pageable pageable);
+public interface UserDao extends JpaRepository<TestUser, Long>, JpaSpecificationExecutor<TestUser> {
+	Page<TestUser> findByName(String name, Pageable pageable);
 }

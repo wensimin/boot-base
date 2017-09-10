@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import tech.shali.project.app.dao.UserDao;
-import tech.shali.project.app.entity.User;
+import tech.shali.project.app.entity.TestUser;
 import tech.shali.project.app.entity.base.QueryPage;
 import tech.shali.project.app.mapper.UserMapper;
 
@@ -24,11 +24,11 @@ public class TestService {
 	@Autowired
 	private UserMapper userMapper;
 
-	public List<User> getAllUser(User user) {
+	public List<TestUser> getAllUser(TestUser user) {
 		return userDao.findAll();
 	}
 
-	public Page<User> getPageUser(QueryPage<User> page) {
+	public Page<TestUser> getPageUser(QueryPage<TestUser> page) {
 		if (page.getQuery() == null) {
 			return userDao.findAll(page.getPageRequest());
 		} else {
@@ -48,11 +48,11 @@ public class TestService {
 		}
 	}
 
-	public User getUser(Long id) {
+	public TestUser getUser(Long id) {
 		return userDao.findOne(id);
 	}
 
-	public User saveUser(User user) {
+	public TestUser saveUser(TestUser user) {
 		return userDao.save(user);
 	}
 

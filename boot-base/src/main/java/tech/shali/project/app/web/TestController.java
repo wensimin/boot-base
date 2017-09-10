@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import tech.shali.project.app.entity.User;
+import tech.shali.project.app.entity.TestUser;
 import tech.shali.project.app.entity.base.QueryPage;
 import tech.shali.project.app.service.TestService;
 import tech.shali.project.app.web.base.BaseController;
@@ -21,25 +21,25 @@ public class TestController extends BaseController {
 	private TestService service;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public Page<User> getPage(QueryPage<User> page,User query) {
+	public Page<TestUser> getPage(QueryPage<TestUser> page,TestUser query) {
 		return service.getPageUser(page.setQuery(query));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public User getById(@PathVariable("id") Long id) {
+	public TestUser getById(@PathVariable("id") Long id) {
 		return service.getUser(id);
 	}
 
 	@IgnoreSecurity
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String create(@RequestBody User user) {
+	public String create(@RequestBody TestUser user) {
 		user.beforeInsert();
 		user = service.saveUser(user);
 		return tokenManager.createToken(user.getId().toString());
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public User update(@RequestBody User user) {
+	public TestUser update(@RequestBody TestUser user) {
 		user.beforeUpdate();
 		return service.saveUser(user);
 	}
