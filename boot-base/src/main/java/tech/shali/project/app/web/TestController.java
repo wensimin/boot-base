@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.shali.project.app.web.base.BaseController;
 
 @RestController
-@RequestMapping("/user")
 public class TestController extends BaseController {
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public Principal getPage(Principal principal) {
+	@RequestMapping(value = "user", method = RequestMethod.GET)
+	public Principal get(Principal principal) {
 		return principal;
+	}
+
+	@RequestMapping(value = "public", method = RequestMethod.GET)
+	public String getPublic() {
+		return "PUBLIC";
 	}
 }

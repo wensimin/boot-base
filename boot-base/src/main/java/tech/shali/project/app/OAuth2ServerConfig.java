@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,16 +27,27 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import tech.shali.project.app.service.SysUserService;
 
+/**
+ * OAuth2相关配置
+ * @author wensimin
+ *
+ */
 @Configuration
 @EnableAuthorizationServer
-public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
+public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 	@Autowired
 	private SysUserService sysUserService;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private RedisConnectionFactory redisConnection;
+	@Autowired
+	private TokenStore tokenStore;
 	@Value("${auth.token.expiration}")
 	private int expiration;
 	@Value("${auth.client}")
@@ -45,17 +57,33 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Value("${auth.token.name}")
 	private String name;
 
+	/**
+	 * 配置tokenStore为redis
+	 * 
+	 * @return
+	 */
+	@Bean
+	public TokenStore tokenStore() {
+		return new RedisTokenStore(redisConnection);
+	}
+
+	/**
+	 * 密码加密方式
+	 * @return
+	 */
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
 		configurer.authenticationManager(authenticationManager);
+		configurer.tokenStore(tokenStore);
 		configurer.userDetailsService(sysUserService);
 	}
-
+	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient(client).secret(secret).accessTokenValiditySeconds(expiration)

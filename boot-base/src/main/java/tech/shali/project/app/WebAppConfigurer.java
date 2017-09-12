@@ -37,6 +37,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		// 返回
 		return objectMapper;
 	}
+	
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
