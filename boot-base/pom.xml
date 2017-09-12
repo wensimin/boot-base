@@ -28,9 +28,9 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-		      <groupId>org.postgresql</groupId>
-		      <artifactId>postgresql</artifactId>
-		  </dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
@@ -44,16 +44,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>1.4.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -128,7 +129,6 @@
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>1</maven.redis.db>
-				<maven.mongodb.url>mongodb://admin:753951anna@192.168.0.200:27017/boot-base</maven.mongodb.url>
 			</properties>
 		</profile>
 		<profile>
