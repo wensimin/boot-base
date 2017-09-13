@@ -34,6 +34,7 @@ import tech.shali.project.app.service.SysUserService;
 
 /**
  * OAuth2相关配置
+ * 
  * @author wensimin
  *
  */
@@ -69,24 +70,31 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	/**
 	 * 密码加密方式
+	 * 
 	 * @return
 	 */
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-	
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
 		configurer.authenticationManager(authenticationManager);
 		configurer.tokenStore(tokenStore);
 		configurer.userDetailsService(sysUserService);
 	}
-	
+
+	//@formatter:off
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient(client).secret(secret).accessTokenValiditySeconds(expiration)
-				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
+		clients.inMemory()
+		.withClient(client)
+		.secret(secret)
+		.accessTokenValiditySeconds(expiration)
+		.scopes("read", "write")
+		.authorizedGrantTypes("password", "refresh_token")
+		.resourceIds("resource");
 	}
+	//@formatter:off
 }

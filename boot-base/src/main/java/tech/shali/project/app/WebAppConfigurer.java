@@ -37,7 +37,8 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		// 返回
 		return objectMapper;
 	}
-	
+
+	//@formatter:off
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
@@ -46,4 +47,5 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		.allowedOrigins("*")
 		.maxAge(maxAge);
 	}
+	//@formatter:on
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import tech.shali.project.app.web.exception.ServiceException;
-import tech.shali.project.app.web.exception.TokenException;
 
 @ControllerAdvice
 @ResponseBody
@@ -17,7 +16,6 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(value = Exception.class)
 	public Response exception(Exception e) {
-		// TODO il18n
 		e.printStackTrace();
 		return new Response("系统错误");
 	}
@@ -25,18 +23,13 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public Response bindException(MethodArgumentNotValidException e) {
-		return new Response(Codes.PARAM_ERROR, e.getBindingResult().getFieldError().getDefaultMessage());
+		return new Response(Errors.PARAM_ERROR, e.getBindingResult().getFieldError().getDefaultMessage());
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(value = ServiceException.class)
 	public Response serviceException(ServiceException e) {
-		return new Response(e.getCode(), e.getMessage());
+		return new Response(e.getError(), e.getMessage());
 	}
 
-	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-	@ExceptionHandler(value = TokenException.class)
-	public Response tokenException(TokenException e) {
-		return new Response(Codes.TOKEN_ERROR, e.getMessage());
-	}
 }
