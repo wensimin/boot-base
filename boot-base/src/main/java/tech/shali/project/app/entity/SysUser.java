@@ -1,19 +1,28 @@
 package tech.shali.project.app.entity;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import tech.shali.project.app.entity.base.DataEntity;
 
+/**
+ * 用户对象
+ * 
+ * @author wensimin
+ *
+ */
 @Entity
 public class SysUser extends DataEntity implements UserDetails {
 
@@ -27,6 +36,9 @@ public class SysUser extends DataEntity implements UserDetails {
 	private String password;
 	@Column(nullable = false)
 	private boolean enabled;
+	@ManyToMany
+	@JoinColumn
+	List<SysRole> roles;
 
 	public Long getId() {
 		return id;
@@ -38,8 +50,9 @@ public class SysUser extends DataEntity implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		return authorities;
+		return roles.stream().map(role->{
+			return role.getName();
+		}).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	@Override
