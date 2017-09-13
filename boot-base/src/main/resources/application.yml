@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: 'jdbc:postgresql://@maven.jdbc.host@:@maven.jdbc.port@/@maven.jdbc.db@'
+    username: '@maven.jdbc.username@'
+    password: '@maven.jdbc.password@'
+  data:
+    mongodb:
+      url: '@maven.mongodb.url@'
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl:
+          auto: update
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: '@maven.redis.host@'
+    port: '@maven.redis.port@'
+    password: '@maven.redis.password@'
+    database: '@maven.redis.db@'
+    
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        hibernate: ERROR
+
+server:
+  context-path: /
+  port: 9090
+  tomcat:
+    uri-encoding: UTF-8
+    
+auth:
+  token:
+    name: X-Token
+
+cors:
+  control:
+    maxAge: 86400
