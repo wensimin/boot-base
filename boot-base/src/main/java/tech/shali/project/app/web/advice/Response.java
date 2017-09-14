@@ -1,25 +1,25 @@
 package tech.shali.project.app.web.advice;
 
 public class Response {
-	private String code;
+	private Errors error;
 	private String message;
 
 	public Response(String message) {
-		this.code = Codes.ERROR;
+		this.error = Errors.ERROR;
 		this.message = message;
 	}
 
-	public Response(String code, String message) {
-		this.code = code;
+	public Response(Errors error, String message) {
+		this.error = error;
 		this.message = message;
 	}
 
-	public String getCode() {
-		return code;
+	public Errors getError() {
+		return error;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setError(Errors error) {
+		this.error = error;
 	}
 
 	public String getMessage() {

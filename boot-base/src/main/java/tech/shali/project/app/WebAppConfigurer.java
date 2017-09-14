@@ -1,32 +1,22 @@
 package tech.shali.project.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-import tech.shali.project.app.web.security.SecurityInterceptor;
 import tech.shali.project.app.web.security.xss.XssStringJsonSerializer;
 
 @Configuration
 public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 	@Value("${cors.control.maxAge}")
 	private int maxAge;
-	@Autowired
-	private SecurityInterceptor securityInterceptor;
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(securityInterceptor);
-		super.addInterceptors(registry);
-	}
 
 	/**
 	 * 描述 : xssObjectMapper
@@ -47,7 +37,8 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		// 返回
 		return objectMapper;
 	}
-	// @formatter:off
+
+	//@formatter:off
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
@@ -56,5 +47,5 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		.allowedOrigins("*")
 		.maxAge(maxAge);
 	}
-	// @formatter:on
+	//@formatter:on
 }

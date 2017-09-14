@@ -56,6 +56,14 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
@@ -70,6 +78,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
+					<include>**/*.yml</include>
 					<include>**/*.properties</include>
 				</includes>
 			</resource>
@@ -79,6 +88,7 @@
 				<filtering>false</filtering>
 				<excludes>
 					<exclude>**/*.xml</exclude>
+					<exclude>**/*.yml</exclude>
 					<exclude>**/*.properties</exclude>
 				</excludes>
 			</resource>
@@ -119,12 +129,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<maven.jdbc.host>192.168.0.209</maven.jdbc.host>
+				<maven.jdbc.host>192.168.0.200</maven.jdbc.host>
 				<maven.jdbc.port>5432</maven.jdbc.port>
-				<maven.jdbc.db>base</maven.jdbc.db>
+				<maven.jdbc.db>security</maven.jdbc.db>
 				<maven.jdbc.username>postgres</maven.jdbc.username>
 				<maven.jdbc.password>753951anna</maven.jdbc.password>
-				<maven.redis.host>192.168.0.209</maven.redis.host>
+				<maven.redis.host>192.168.0.200</maven.redis.host>
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>1</maven.redis.db>
