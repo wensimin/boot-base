@@ -1,11 +1,14 @@
 package tech.shali.project.app.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -36,7 +39,7 @@ public class SysUser extends DataEntity implements UserDetails {
 	private String password;
 	@Column(nullable = false)
 	private boolean enabled;
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinColumn
 	List<SysRole> roles;
 
@@ -50,9 +53,11 @@ public class SysUser extends DataEntity implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return roles.stream().map(role->{
-			return role.getName();
-		}).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		return Optional.ofNullable(roles).map(roles -> {
+			return roles.stream().map(role -> {
+				return role.getName();
+			}).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		}).orElse(new ArrayList<>());
 	}
 
 	@Override
@@ -83,6 +88,14 @@ public class SysUser extends DataEntity implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return this.enabled;
+	}
+
+	public List<SysRole> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<SysRole> roles) {
+		this.roles = roles;
 	}
 
 }

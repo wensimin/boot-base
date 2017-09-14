@@ -8,5 +8,9 @@ public enum Errors {
 	/**
 	 * 参数错误
 	 */
-	PARAM_ERROR
+	PARAM_ERROR,
+	/**
+	 * 权限不够
+	 */
+	UN_AUTH
 }

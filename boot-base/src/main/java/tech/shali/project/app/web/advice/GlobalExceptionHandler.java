@@ -1,6 +1,7 @@
 package tech.shali.project.app.web.advice;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,5 +32,11 @@ public class GlobalExceptionHandler {
 	public Response serviceException(ServiceException e) {
 		return new Response(e.getError(), e.getMessage());
 	}
-
+	
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
+	@ExceptionHandler(value = AccessDeniedException.class)
+	public Response serviceException(AccessDeniedException e) {
+		return new Response(Errors.UN_AUTH, e.getMessage());
+	}
+	
 }
