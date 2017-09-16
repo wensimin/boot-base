@@ -45,7 +45,12 @@ auth:
 management: 
   security:
     enabled: true
-    roles: ACTUATOR
+    roles: "ACTUATOR"
+
+security:
+  oauth2:
+    resource:
+      filter-order: 3
 
 cors:
   control:
