@@ -21,7 +21,7 @@ spring:
       javax:
         persistence: 
           sharedCache: 
-            mode: 'ALL'
+            mode: 'ENABLE_SELECTIVE'
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -37,7 +37,8 @@ logging:
       springframework:
         web: DEBUG
         hibernate: ERROR
-
+    tech: 
+      shali: DEBUG
 server:
   context-path: /
   port: 9090

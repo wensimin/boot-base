@@ -26,6 +26,7 @@ public class TestController extends BaseController {
 	@Autowired
 	private CacheDao cacheDao;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public Principal get(Principal principal) {
 		service.loadUserByUsername(principal.getName());
@@ -42,10 +43,10 @@ public class TestController extends BaseController {
 	public boolean getActuator(HttpServletRequest request) {
 		return request.isUserInRole("ACTUATOR");
 	}
-	
+
 	@RequestMapping(value = "cache", method = RequestMethod.GET)
 	public List<CacheEntity> getCache() {
-		logger.debug("size:"+CacheManager.ALL_CACHE_MANAGERS.get(0).getCache(CacheEntity.class.getName()).getSize());
+		logger.debug("size:" + CacheManager.ALL_CACHE_MANAGERS.get(0).getCache(CacheEntity.class.getName()).getSize());
 		return cacheDao.findAll();
 	}
 }
