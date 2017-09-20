@@ -30,7 +30,8 @@ logging:
         hibernate: ERROR
 
 server:
-  context-path: /
+  servlet: 
+    context-path: /
   port: 9090
   tomcat:
     uri-encoding: UTF-8
