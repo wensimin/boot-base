@@ -7,8 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CacheEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
