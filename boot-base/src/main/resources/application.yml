@@ -21,6 +21,13 @@ spring:
     port: '@maven.redis.port@'
     password: '@maven.redis.password@'
     database: '@maven.redis.db@'
+  http: 
+    multipart: 
+      max-file-size: 10MB
+
+system:
+  file:
+    base-path: D:/test/file
     
 logging:
   level:
@@ -31,7 +38,7 @@ logging:
 
 server:
   context-path: /
-  port: 9090
+  port: 9191
   tomcat:
     uri-encoding: UTF-8
     
