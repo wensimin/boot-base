@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.shali.project.app.entity.TestUser;
 import tech.shali.project.app.entity.UserAttr;
 import tech.shali.project.app.entity.base.QueryPage;
+import tech.shali.project.app.entity.projections.SimpleUser;
 import tech.shali.project.app.service.TestService;
 import tech.shali.project.app.web.base.BaseController;
 import tech.shali.project.app.web.security.IgnoreSecurity;
@@ -29,6 +30,11 @@ public class TestController extends BaseController {
 	@RequestMapping(value = "attr", method = RequestMethod.GET)
 	public Page<TestUser> getPageByAttr(UserAttr attr) {
 		return service.getPageByAttr(attr);
+	}
+	@IgnoreSecurity
+	@RequestMapping(value = "sub", method = RequestMethod.GET)
+	public Page<SimpleUser> getSub(QueryPage<TestUser> page, TestUser query) {
+		return service.getSub(page.setQuery(query));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

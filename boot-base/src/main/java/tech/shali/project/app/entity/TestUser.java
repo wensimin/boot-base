@@ -10,11 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import tech.shali.project.app.entity.base.DataEntity;
 import tech.shali.project.app.entity.eunm.UserType;
 
 @Entity
+@Table(name = "test_user")
 public class TestUser extends DataEntity {
 
 	private static final long serialVersionUID = 1L;

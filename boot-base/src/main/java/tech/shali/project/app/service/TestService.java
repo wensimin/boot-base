@@ -15,16 +15,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import tech.shali.project.app.dao.SimpleUserDao;
 import tech.shali.project.app.dao.UserDao;
 import tech.shali.project.app.entity.TestUser;
 import tech.shali.project.app.entity.UserAttr;
 import tech.shali.project.app.entity.base.QueryPage;
+import tech.shali.project.app.entity.projections.SimpleUser;
 import tech.shali.project.app.mapper.UserMapper;
 
 @Service
 public class TestService {
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private SimpleUserDao simUserDao;
 	@Autowired
 	private UserMapper userMapper;
 
@@ -66,6 +70,7 @@ public class TestService {
 
 	/**
 	 * 根据manyTomany 关系进行查询
+	 * 
 	 * @demo
 	 * @param attr
 	 * @return
@@ -78,5 +83,11 @@ public class TestService {
 			subquery.select(joins).where(cb.equal(joins.get("id"), attr.getId()));
 			return query.where(cb.exists(subquery)).getRestriction();
 		}, new QueryPage<>().getPageRequest());
+	}
+
+	public Page<SimpleUser> getSub(QueryPage<TestUser> page) {
+		return simUserDao.findAll((root, query, cb) -> {
+			return query.where().getRestriction();
+		}, page.getPageRequest());
 	}
 }

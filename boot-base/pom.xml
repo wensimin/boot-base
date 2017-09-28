@@ -116,12 +116,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<maven.jdbc.host>192.168.0.200</maven.jdbc.host>
+				<maven.jdbc.host>shali.tech</maven.jdbc.host>
 				<maven.jdbc.port>5432</maven.jdbc.port>
 				<maven.jdbc.db>base</maven.jdbc.db>
 				<maven.jdbc.username>postgres</maven.jdbc.username>
 				<maven.jdbc.password>753951anna</maven.jdbc.password>
-				<maven.redis.host>192.168.0.200</maven.redis.host>
+				<maven.redis.host>shali.tech</maven.redis.host>
 				<maven.redis.port>6379</maven.redis.port>
 				<maven.redis.password>753951anna</maven.redis.password>
 				<maven.redis.db>1</maven.redis.db>
