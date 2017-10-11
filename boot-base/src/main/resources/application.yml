@@ -3,9 +3,6 @@ spring:
     url: 'jdbc:postgresql://@maven.jdbc.host@:@maven.jdbc.port@/@maven.jdbc.db@'
     username: '@maven.jdbc.username@'
     password: '@maven.jdbc.password@'
-  data:
-    mongodb:
-      url: '@maven.mongodb.url@'
   jpa:
     properties:
       hibernate:
@@ -21,7 +18,8 @@ spring:
     port: '@maven.redis.port@'
     password: '@maven.redis.password@'
     database: '@maven.redis.db@'
-    
+  application:
+    name: base-service
 logging:
   level:
     org:
@@ -35,7 +33,19 @@ server:
   port: 9090
   tomcat:
     uri-encoding: UTF-8
-    
+# 尤里卡配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8761}/eureka/
+    instance:
+      leaseRenewalIntervalInSeconds: 1
+      leaseExpirationDurationInSeconds: 2
+# ribbon
+ribbon:
+  eureka:
+    enabled: true
+
 auth:
   client: client
   secret: secret
