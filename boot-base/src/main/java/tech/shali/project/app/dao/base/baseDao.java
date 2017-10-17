@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @param <T>
  * @param <ID>
  */
-public interface baseDao<T extends DataEntity,ID extends Serializable> extends JpaRepository<T,ID>,JpaSpecificationExecutor<T> {
-    
+//public interface baseDao<T extends DataEntity,ID extends Serializable> extends JpaRepository<T,ID>,JpaSpecificationExecutor<T> {
+public interface baseDao{
+    // TODO
 }
