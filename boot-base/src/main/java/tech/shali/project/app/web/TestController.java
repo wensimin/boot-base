@@ -4,27 +4,30 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
 
+import tech.shali.project.app.entity.SysUser;
+import tech.shali.project.app.service.SysUserService;
 import tech.shali.project.app.web.base.BaseController;
 
 @RestController
 public class TestController extends BaseController {
 
-	@RequestMapping(value = "user", method = RequestMethod.GET)
+	@GetMapping(value = "user")
 	public Principal get(Principal principal) {
 		return principal;
 	}
 
-	@RequestMapping(value = "public", method = RequestMethod.GET)
+	@GetMapping(value = "public")
 	public String getPublic() {
 		return "PUBLIC";
 	}
 
-	@RequestMapping(value = "actuator-test", method = RequestMethod.GET)
+	@GetMapping(value = "actuator-test")
 	@PreAuthorize(value = "hasRole('ACTUATOR')")
 	public boolean getActuator(HttpServletRequest request) {
 		return request.isUserInRole("ACTUATOR");

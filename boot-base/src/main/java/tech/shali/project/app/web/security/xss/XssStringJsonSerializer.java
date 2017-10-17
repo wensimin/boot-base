@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 /**
  * 描述 : 基于xss的JsonSerializer
  *
- * @author wangkang
+ * @author wensimin
  *
  */
 public class XssStringJsonSerializer extends JsonSerializer<String> {
