@@ -91,7 +91,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+    </dependencies>
 	<build>
 		<finalName>boot-demo</finalName>
 		<resources>
