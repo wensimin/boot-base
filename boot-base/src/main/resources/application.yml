@@ -9,6 +9,8 @@ spring:
   jpa:
     properties:
       hibernate:
+        id: 
+          new_generator_mappings: true
         show_sql: true
         format_sql: true
         hbm2ddl:
@@ -24,6 +26,7 @@ spring:
     
 logging:
   level:
+#    root: WARN
     org:
       springframework:
         web: DEBUG
