@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import tech.shali.project.app.dao.UserDao;
 import tech.shali.project.app.entity.SysUser;
 
-import java.util.UUID;
-
 @Service
 public class SysUserService implements UserDetailsService {
 	@Autowired
