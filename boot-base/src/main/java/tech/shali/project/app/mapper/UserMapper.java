@@ -11,5 +11,5 @@ import tech.shali.project.app.entity.SysUser;
 public interface UserMapper {
 	
 	@SelectProvider(type = UserMapperProvider.class, method = "findByNameLike")
-	public List<SysUser> findByNameLike(String name);
+	List<SysUser> findByNameLike(String name);
 }

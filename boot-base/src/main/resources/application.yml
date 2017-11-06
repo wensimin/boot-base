@@ -14,6 +14,7 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl:
+        # 禁用此项来加快启动速度，开启则自动创建表和依赖
           auto: update
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -39,7 +40,9 @@ server:
     uri-encoding: UTF-8
     
 auth:
+  # 资源端id
   client: client
+  # 资源端密码
   secret: secret
   token: 
     name: token
@@ -49,16 +52,7 @@ management:
   context-path: /admin
   security:
     enabled: true
-    roles: "ROLE_ADMIN"
-    
-security:
-#  user: 
-#    name: admin
-#    password: secret
-#    authorities: "ROLE_ADMIN"
-  oauth2:
-    resource:
-      filter-order: 3
+    roles: "ROLE_ACTUATOR"
 
 cors:
   control:

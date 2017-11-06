@@ -8,6 +8,9 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 公共dataEntity
+ */
 @MappedSuperclass
 @EntityListeners(DataEntityListener.class)
 public class DataEntity implements Serializable {
