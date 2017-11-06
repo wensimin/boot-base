@@ -89,12 +89,12 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
-		.withClient(client)
-		.secret(secret)
-		.accessTokenValiditySeconds(expiration)
-		.scopes("read", "write")
-		.authorizedGrantTypes("password", "refresh_token")
-		.resourceIds("resource");
+			.withClient(client)
+			.secret(secret)
+			.accessTokenValiditySeconds(expiration)
+			.scopes("read", "write")
+			.authorizedGrantTypes("password", "refresh_token")
+			.resourceIds("resource");
 	}
 	//@formatter:off
 }

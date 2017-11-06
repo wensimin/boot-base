@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	public void init(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/public/**");
+		web.ignoring()
+			.antMatchers("/public/**");
 	}
 }

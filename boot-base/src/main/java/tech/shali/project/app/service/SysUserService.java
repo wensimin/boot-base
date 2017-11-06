@@ -16,10 +16,14 @@ public class SysUserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userDao.findByUserName(username);
+		SysUser user = userDao.findByUserName(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("用户未找到");
+		}
+		return user;
 	}
 
-    public void save(SysUser sysUser) {
-	    userDao.save(sysUser);
-    }
+	public void save(SysUser sysUser) {
+		userDao.save(sysUser);
+	}
 }

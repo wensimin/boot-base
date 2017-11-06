@@ -46,11 +46,16 @@ auth:
     expiration: 1296000
 
 management: 
+  context-path: /admin
   security:
     enabled: true
-    roles: "ACTUATOR"
-
+    roles: "ROLE_ADMIN"
+    
 security:
+#  user: 
+#    name: admin
+#    password: secret
+#    authorities: "ROLE_ADMIN"
   oauth2:
     resource:
       filter-order: 3

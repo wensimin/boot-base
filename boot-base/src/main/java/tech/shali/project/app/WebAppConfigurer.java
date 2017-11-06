@@ -31,7 +31,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 		// 解析器
 		ObjectMapper objectMapper = builder.createXmlMapper(false).build();
 		// 注册xss解析器
-		SimpleModule xssModule = new SimpleModule("XssStringJsonSerializer");
+		SimpleModule xssModule = new SimpleModule();
 		xssModule.addSerializer(new XssStringJsonSerializer());
 		objectMapper.registerModule(xssModule);
 		// 返回
@@ -42,10 +42,10 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-		.allowedHeaders("*")
-		.allowedMethods("*")
-		.allowedOrigins("*")
-		.maxAge(maxAge);
+			.allowedHeaders("*")
+			.allowedMethods("*")
+			.allowedOrigins("*")
+			.maxAge(maxAge);
 	}
 	//@formatter:on
 }
