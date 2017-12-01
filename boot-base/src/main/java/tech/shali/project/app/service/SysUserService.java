@@ -20,6 +20,6 @@ public class SysUserService implements UserDetailsService {
 	}
 
     public void save(SysUser sysUser) {
-	    userDao.save(sysUser);
+	    userDao.saveAndFlush(sysUser);
     }
 }

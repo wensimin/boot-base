@@ -8,9 +8,7 @@ spring:
       url: '@maven.mongodb.url@'
   jpa:
     properties:
-      hibernate:
-        id: 
-          new_generator_mappings: true
+      hibernate: 
         show_sql: true
         format_sql: true
         hbm2ddl:
