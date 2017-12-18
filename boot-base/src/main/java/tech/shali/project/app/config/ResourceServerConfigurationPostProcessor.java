@@ -1,4 +1,4 @@
-package tech.shali.project.app;
+package tech.shali.project.app.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

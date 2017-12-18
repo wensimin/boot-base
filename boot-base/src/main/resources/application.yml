@@ -9,8 +9,8 @@ spring:
   jpa:
     properties:
       hibernate: 
-        show_sql: true
-        format_sql: true
+        show_sql: false
+        format_sql: false
         hbm2ddl:
           auto: update
   jackson:
@@ -24,15 +24,14 @@ spring:
     
 logging:
   level:
-#    root: WARN
-    org:
-      springframework:
-        web: DEBUG
-        hibernate: ERROR
+    root: '${log:warn}'
+    tech:
+      shali: '${app-log:debug}'
+  file: log/log.log
 
 server:
-  context-path: /
-  port: 9090
+  context-path: '${context-path:/}'
+  port: '${port:80}'
   tomcat:
     uri-encoding: UTF-8
     
@@ -55,4 +54,8 @@ security:
 
 cors:
   control:
+    # cors 过期时间
     maxAge: 86400
+pageable:
+  # 配置分页参数前缀
+  prefix: page
